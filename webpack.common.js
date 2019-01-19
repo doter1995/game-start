@@ -13,5 +13,15 @@ module.exports = {
       title: "hello word"
     }),
     new CleanWebpackPlugin(["dist"])
-  ]
+  ],
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [
+        "style-loader",
+        "css-loader",
+        "sass-loader"
+      ]
+    }]
+  }
 }
