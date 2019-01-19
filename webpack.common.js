@@ -14,6 +14,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['dist']),
   ],
+  resolve:{
+    extensions: ['.js', '.jsx','.json']
+  },
   module: {
     rules: [
       {
@@ -21,7 +24,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js|jsx$/,
         exclude: /(node_modules|bower_components)/,
         use: 'babel-loader',
       },
