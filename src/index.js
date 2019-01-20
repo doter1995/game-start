@@ -10,7 +10,7 @@ var element = document.createElement('div')
 element.id = 'app'
 document.body.appendChild(element)
 
-let render =()=>{
-  ReactDOM.render(<App/>, element)
+let render = () => {
+  ReactDOM.render(<App />, element)
 }
-render();
+render()

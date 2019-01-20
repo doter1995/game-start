@@ -14,8 +14,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['dist']),
   ],
-  resolve:{
-    extensions: ['.js', '.jsx','.json']
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
   },
   module: {
     rules: [
