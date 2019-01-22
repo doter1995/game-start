@@ -1,16 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from './App'
-import './index.scss'
+import { Provider } from 'react-redux';
+import store from './store';
 
-var element = document.createElement('div')
+import App from './App';
+import './index.scss';
+
+var element = document.createElement('div');
 
 // 通过import导入
-element.id = 'app'
-document.body.appendChild(element)
+element.id = 'app';
+document.body.appendChild(element);
 
-let render = () => {
-  ReactDOM.render(<App />, element)
-}
-render()
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  element
+);
