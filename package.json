@@ -14,13 +14,13 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
-    },
-    "lint-stage": {
-      "*.js": [
-        "eslint --fix",
-        "git add"
-      ]
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "author": "",
   "license": "ISC",
