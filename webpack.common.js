@@ -1,7 +1,6 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -16,6 +15,10 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      Component: path.resolve(__dirname, './src/Components'),
+      Page: path.resolve(__dirname, './src/Page'),
+    },
   },
   module: {
     rules: [
@@ -30,4 +33,4 @@ module.exports = {
       },
     ],
   },
-}
+};
