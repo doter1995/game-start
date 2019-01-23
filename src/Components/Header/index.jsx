@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
-import { Menu, Layout } from 'antd';
+import { Layout } from 'antd';
+import { NavLink } from 'react-router-dom';
 
 import './index.scss';
 const { Header } = Layout;
-
+const config = [
+  {
+    title: 'D3',
+    ul: '/d3',
+  },
+  {
+    title: 'THREE',
+    ul: '/three',
+  },
+  {
+    title: 'GITHUB',
+    ul: '/github',
+  },
+  {
+    title: 'BLOG',
+    ul: '/blog',
+  },
+];
 export default class index extends Component {
   render() {
     return (
       <Header className="header">
         <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['1']}
-          style={{ lineHeight: '64px' }}
-        >
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
-        </Menu>
+        <div className="nav">
+          {config.map(data => {
+            return (
+              <NavLink key={data.title} to={data.ul} activeClassName="selected">
+                {data.title}
+              </NavLink>
+            );
+          })}
+        </div>
       </Header>
     );
   }

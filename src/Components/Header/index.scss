@@ -1,4 +1,17 @@
 .header {
   display: flex;
   justify-content: space-between;
+  color: #fff;
+  .nav {
+    a {
+      min-width: 120px;
+      display: inline-block;
+      text-align: center;
+    }
+    a.selected,
+    a:hover {
+      background-color: #1890ff;
+      color: #fff;
+    }
+  }
 }
