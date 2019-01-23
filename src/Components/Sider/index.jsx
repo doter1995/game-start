@@ -1,62 +1,64 @@
 import React, { Component } from 'react';
 import { Menu, Layout, Icon } from 'antd';
+import { withRouter } from 'react-router';
+import matchPath from './matchPath';
+import SiderData from 'Config/sider.js';
+
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-export default class index extends Component {
+class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      path: matchPath(props.location),
+    };
+  }
+  onChangeUrl = data => {
+    this.props.history.push(`/${this.state.path[0]}/${data.key}`);
+  };
+  renderIcon = data => (
+    <span>
+      <Icon type={data.icon || 'user'} />
+      {data.title}
+    </span>
+  );
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+      this.setState({ path: matchPath(nextProps.location) });
+    }
+  }
+
   render() {
+    let key = this.state.path[0];
+    console.log(this.state.path);
+    if (key === '') {
+      return <div />;
+    }
     return (
       <Sider width={200} style={{ background: '#fff' }}>
         <Menu
           mode="inline"
+          theme="dark"
           defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          defaultOpenKeys={Object.keys(SiderData[key])}
           style={{ height: '100%', borderRight: 0 }}
         >
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-                <Icon type="user" />
-                subnav 1
-              </span>
-            }
-          >
-            <Menu.Item key="1">option1</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub2"
-            title={
-              <span>
-                <Icon type="laptop" />
-                subnav 2
-              </span>
-            }
-          >
-            <Menu.Item key="5">option5</Menu.Item>
-            <Menu.Item key="6">option6</Menu.Item>
-            <Menu.Item key="7">option7</Menu.Item>
-            <Menu.Item key="8">option8</Menu.Item>
-          </SubMenu>
-          <SubMenu
-            key="sub3"
-            title={
-              <span>
-                <Icon type="notification" />
-                subnav 3
-              </span>
-            }
-          >
-            <Menu.Item key="9">option9</Menu.Item>
-            <Menu.Item key="10">option10</Menu.Item>
-            <Menu.Item key="11">option11</Menu.Item>
-            <Menu.Item key="12">option12</Menu.Item>
-          </SubMenu>
+          {SiderData[key].map(data => {
+            return (
+              <SubMenu key={data.title} title={this.renderIcon(data)}>
+                {data.links.map(item => (
+                  <Menu.Item key={`${item.link}`} onClick={this.onChangeUrl}>
+                    {item.title}
+                  </Menu.Item>
+                ))}
+              </SubMenu>
+            );
+          })}
         </Menu>
       </Sider>
     );
   }
 }
+export default withRouter(Index);
