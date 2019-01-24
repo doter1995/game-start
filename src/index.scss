@@ -1,6 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
+  color: #fff;
 }
 .hello {
   background: #f43;
@@ -10,4 +11,11 @@ a,
 a:visited,
 a:focus {
   text-decoration: none;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+}
+.Content {
+  background: #000c17;
 }

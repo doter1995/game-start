@@ -28,14 +28,14 @@ export default {
             '使用d3进行svg的绘制，定制化开发，添加部分特殊标记，以及动态增加数据，封装了部分常用功能。',
         },
         {
-          link: 'MQVisWidget/demo',
-          title: 'MQVisWidget_demo0',
+          link: 'MQVisWidget0',
+          title: 'MQVisWidget0',
           description:
             '使用d3进行svg的绘制，定制化开发，修改d3.zoom库，从而实现XY轴即可独立缩放也可同时缩放。shirft/alt+滚轮来控制是否独立缩放XY',
         },
         {
-          link: 'MQVisWidget/demo1',
-          title: 'MQVisWidget_demo1',
+          link: 'MQVisWidget1',
+          title: 'MQVisWidget1',
           description: '功能同上。',
         },
         {
@@ -49,7 +49,7 @@ export default {
           description: '使用d3进行svg的绘制，时间轴，只能缩放x轴。',
         },
         {
-          link: 'widget/demo',
+          link: 'widget',
           title: 'widget',
           description: '使用d3进行svg的绘制，自定义绘制X轴',
         },

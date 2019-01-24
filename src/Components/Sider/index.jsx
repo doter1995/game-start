@@ -33,7 +33,7 @@ class Index extends Component {
   render() {
     let key = this.state.path[0];
     console.log(this.state.path);
-    if (key === '') {
+    if (!SiderData[key]) {
       return <div />;
     }
     return (
