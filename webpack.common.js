@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyFileWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -13,6 +14,10 @@ module.exports = {
       title: 'hello word',
     }),
     new CleanWebpackPlugin(['dist']),
+    new CopyFileWebpackPlugin([
+      { from: 'Public/images', to: 'images' },
+      { from: 'Public/markdowns', to: 'markdowns' },
+    ]),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -38,5 +43,10 @@ module.exports = {
         use: 'babel-loader',
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 };
