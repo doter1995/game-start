@@ -2,7 +2,22 @@
   display: flex;
   justify-content: space-between;
   color: #fff;
-  .nav {
+  padding: 0px;
+  .nav_left {
+    cursor: pointer;
+    .logo {
+      display: inline-block;
+      background: url('/images/head.jpg') center no-repeat;
+      background-size: 60px;
+      width: 60px;
+    }
+    h1 {
+      display: inline-block;
+      color: #1890ff;
+    }
+  }
+
+  .nav_right {
     a {
       min-width: 120px;
       display: inline-block;

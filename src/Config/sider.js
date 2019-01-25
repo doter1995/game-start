@@ -2,6 +2,7 @@ export default {
   d3: [
     {
       title: '实战组件',
+      link: 'scene',
       links: [
         {
           link: 'D3Map',
@@ -63,6 +64,7 @@ export default {
     },
     {
       title: '基础布局',
+      link: 'common',
       links: [
         {
           link: 'charts/pies',
@@ -114,6 +116,7 @@ export default {
   three: [
     {
       title: '基础布局',
+      link: 'common',
       links: [
         {
           link: 'backGround',

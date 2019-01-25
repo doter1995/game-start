@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
-export default class PageContent extends Component {
+import { withRouter } from 'react-router';
+import matchPath from 'Component/matchPath';
+class PageContent extends Component {
   render() {
-    console.log(this.props);
-    return <div>hello</div>;
+    return <div>{matchPath(this.props.location)}</div>;
   }
 }
+export default withRouter(PageContent);

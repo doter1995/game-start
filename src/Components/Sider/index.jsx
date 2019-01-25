@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Layout, Icon } from 'antd';
 import { withRouter } from 'react-router';
-import matchPath from './matchPath';
+import matchPath from '../matchPath';
 import SiderData from 'Config/sider.js';
 
 const { Sider } = Layout;
@@ -15,6 +15,7 @@ class Index extends Component {
     };
   }
   onChangeUrl = data => {
+    console.log('data', data);
     this.props.history.push(`/${this.state.path[0]}/${data.key}`);
   };
   renderIcon = data => (
@@ -31,8 +32,8 @@ class Index extends Component {
   }
 
   render() {
-    let key = this.state.path[0];
-    console.log(this.state.path);
+    let path = this.state.path;
+    let key = path[0];
     if (!SiderData[key]) {
       return <div />;
     }
@@ -41,15 +42,18 @@ class Index extends Component {
         <Menu
           mode="inline"
           theme="dark"
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={Object.keys(SiderData[key])}
+          defaultOpenKeys={[path[1] || '']}
+          defaultSelectedKeys={[path[2] || '']}
           style={{ height: '100%', borderRight: 0 }}
         >
           {SiderData[key].map(data => {
             return (
-              <SubMenu key={data.title} title={this.renderIcon(data)}>
+              <SubMenu key={data.link} title={this.renderIcon(data)}>
                 {data.links.map(item => (
-                  <Menu.Item key={`${item.link}`} onClick={this.onChangeUrl}>
+                  <Menu.Item
+                    key={`${data.link}/${item.link}`}
+                    onClick={this.onChangeUrl}
+                  >
                     {item.title}
                   </Menu.Item>
                 ))}
