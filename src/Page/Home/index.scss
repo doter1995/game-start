@@ -1,0 +1,19 @@
+.index_grid {
+  margin: 10 0px;
+  & > div {
+    padding-top: 8px;
+  }
+  .ant-card {
+    box-sizing: border-box;
+    border: 1px #000 solid;
+    &:hover {
+      border: 1px #1890ff solid;
+    }
+    .ant-card-body {
+      color: #fff;
+      background: #1890ff;
+
+      padding: 14px;
+    }
+  }
+}
