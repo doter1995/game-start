@@ -12,11 +12,15 @@ export default class index extends Component {
     return (
       <Header className="header">
         <div className="nav_left">
-          <img
-            className="logo"
-            src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
-          />
-          <h1>Wdzhang</h1>
+          <NavLink to="/">
+            <img
+              className="logo"
+              src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+            />
+          </NavLink>
+          <h1>
+            <NavLink to="/me">Wdzhang</NavLink>
+          </h1>
         </div>
         <div className="nav_right">
           {NavData.map(data => {

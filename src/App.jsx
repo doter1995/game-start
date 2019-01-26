@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import PageNotFound from 'Page/PageError/404';
 import PageContent from 'Page/PageContent';
 import Home from 'Page/Home';
+import Info from 'Page/Info';
 export default class Index extends Component {
   render() {
     return (
@@ -16,6 +17,7 @@ export default class Index extends Component {
           <Layout className="Content">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/me" component={Info} />
               <Route path="/:key/:path" component={PageContent} />
               <Route path="/404" component={PageNotFound} />
               <Route component={PageNotFound} />
