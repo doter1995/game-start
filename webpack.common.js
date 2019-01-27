@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyFileWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -30,16 +31,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: [/\.css$/, /\.scss$/],
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader'],
       },
       {
         test: /\.js|jsx$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: 'babel-loader',
       },
     ],

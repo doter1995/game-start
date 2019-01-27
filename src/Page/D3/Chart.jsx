@@ -9,6 +9,6 @@ export default class Chart extends Component {
     this.props.initCharts();
   }
   render() {
-    return <div ref={this.setRefs} />;
+    return <div ref={this.setRefs} value={20} />;
   }
 }
