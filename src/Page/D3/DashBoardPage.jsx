@@ -14,7 +14,7 @@ class Index extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <ReactInterval
           timeout={1000}
           enabled
