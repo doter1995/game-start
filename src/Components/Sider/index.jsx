@@ -37,13 +37,14 @@ class Index extends Component {
     if (!SiderData[key]) {
       return <div />;
     }
+    console.log(path[2]);
     return (
       <Sider width={200} style={{ background: '#fff' }}>
         <Menu
           mode="inline"
           theme="dark"
           defaultOpenKeys={[path[1] || '']}
-          defaultSelectedKeys={[path[2] || '']}
+          defaultSelectedKeys={[path[1] + '/' + path[2] || '']}
           style={{ height: '100%', borderRight: 0 }}
         >
           {SiderData[key].map(data => {

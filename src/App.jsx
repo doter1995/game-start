@@ -18,7 +18,7 @@ export default class Index extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/me" component={Info} />
-              <Route path="/:key/:path" component={PageContent} />
+              <Route path="/:key" component={PageContent} />
               <Route path="/404" component={PageNotFound} />
               <Route component={PageNotFound} />
             </Switch>

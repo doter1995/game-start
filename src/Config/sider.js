@@ -11,7 +11,7 @@ export default {
             '使用d3.geo实现基础地图绘制，使用定时器修改属性实现动态效果',
         },
         {
-          link: 'gitChain/demo',
+          link: 'gitChain',
           title: 'gitChain',
           description:
             '使用d3进行svg的绘制，定制化开发的gitChain，封装了部分按钮事件以及上下排序等等。',
@@ -67,47 +67,47 @@ export default {
       link: 'common',
       links: [
         {
-          link: 'charts/pies',
+          link: 'pies',
           title: 'pies',
         },
         {
-          link: 'charts/tree',
+          link: 'tree',
           title: 'tree',
         },
         {
-          link: 'charts/treeMap',
+          link: 'treeMap',
           title: 'treeMap',
         },
         {
-          link: 'charts/partition',
+          link: 'partition',
           title: 'partition分区图',
         },
         {
-          link: 'charts/pack',
+          link: 'pack',
           title: 'pack 包',
         },
         {
-          link: 'charts/histogram',
+          link: 'histogram',
           title: 'histogram 直方图',
         },
         {
-          link: 'charts/stack',
+          link: 'stack',
           title: 'stack 堆栈图',
         },
         {
-          link: 'charts/force',
+          link: 'force',
           title: 'force 力向导图',
         },
         {
-          link: 'charts/force.html',
+          link: 'force.html',
           title: '力向导图v3',
         },
         {
-          link: 'charts/brush',
+          link: 'brush',
           title: '刷子',
         },
         {
-          link: 'charts/geo',
+          link: 'geo',
           title: '地理',
         },
       ],

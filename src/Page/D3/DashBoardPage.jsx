@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DashBoard } from './charts';
+import { DashBoard } from 'Component/Charts';
 import ReactInterval from 'react-interval';
 
 class Index extends Component {
