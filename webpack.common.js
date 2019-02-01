@@ -17,6 +17,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new CopyFileWebpackPlugin([
       { from: 'Public/images', to: 'images' },
+      { from: 'Public/data', to: 'data' },
       { from: 'Public/markdowns', to: 'markdowns' },
     ]),
   ],
