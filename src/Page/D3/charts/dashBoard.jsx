@@ -15,18 +15,14 @@ export default class Chart extends Component {
     return Math.sin(this.scaleArc(d)) * R;
   };
   renderCharts = (root, width, height) => {
-    var magrin = 50;
-    var w = width - magrin * 2,
-      h = height - magrin * 2;
     var color = d3.scaleOrdinal(d3.schemeCategory10);
     var svg = d3
       .select(root)
       .append('svg')
       .attr('width', width)
       .attr('height', height)
-      .style('margin-left', '5%')
       .append('g')
-      .attr('class', 'dashBoard')
+      .attr('class', 'dash_board_g')
       .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
     var set = [40, 40, 20];
     var outer = 200,
@@ -158,18 +154,16 @@ export default class Chart extends Component {
   };
   componentDidMount() {
     var root = this.node;
-    var width = 500,
-      height = 500;
-    this.renderCharts(root, width, height);
+    this.renderCharts(root, this.props.width, this.props.height);
   }
   //WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     this.update(nextProps.value);
   }
   render() {
     return (
       <div
+        className="dashBoard"
         ref={ref => {
           this.node = ref;
         }}

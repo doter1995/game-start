@@ -16,7 +16,10 @@ export default class index extends Component {
           </Card>
         </Col>
         <Col {...configLayout}>
-          <Card cover={<img src="/images/index/track.png" />} bordered={false}>
+          <Card
+            cover={<img src="/images/index/dashBoard.jpg" />}
+            bordered={false}
+          >
             Card content
           </Card>
         </Col>

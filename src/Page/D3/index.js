@@ -1,3 +1,3 @@
-import DashBoard from './charts/dashBoard';
+import DashBoard from './DashBoardPage';
 
 export { DashBoard };

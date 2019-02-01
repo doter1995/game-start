@@ -14,7 +14,7 @@ export default class Index extends Component {
         <Header />
         <Layout>
           <Sider />
-          <Layout className="Content">
+          <Layout id="Content">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/me" component={Info} />
