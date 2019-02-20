@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import D3Map from './d3map';
+import GitChain from './gitChain';
 
 export default class index extends Component {
   componentDidMount() {
-    this.d3Map = new D3Map({
+    this.gitChain = new GitChain({
       node: this.node,
       ...this.props,
     });
   }
   //WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
   componentWillReceiveProps(nextProps) {
-    this.d3Map.update({ active: nextProps.active });
+    this.gitChain.update({ active: nextProps.active });
   }
   render() {
     return (

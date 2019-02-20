@@ -20,8 +20,7 @@ export default function(config) {
     .attr('background-color', background);
   var mapG = svg.append('g').attr('class', 'map');
   var pointG = svg.append('g').attr('class', 'point');
-  var x = 0,
-    y = 0; //设置旋转角度
+
   var projection = d3
     .geoMercator()
     .center([107, 37])
@@ -32,7 +31,6 @@ export default function(config) {
     console.error('请配置地图json文件');
     return null;
   }
-  console.log('aa');
   fetch(json)
     .then(res => res.json())
     .then(dataSet => {
@@ -83,7 +81,7 @@ export default function(config) {
     });
   //动点动画
   var opacity = 0.1;
-  var t = d3.interval(function(elapsed) {
+  d3.interval(function(elapsed) {
     opacity += 0.1;
     opacity %= 1;
     points
