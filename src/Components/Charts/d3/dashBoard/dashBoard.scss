@@ -7,5 +7,20 @@
         stroke: #fff;
       }
     }
+    .pointer {
+      stroke: #e00;
+      fill: #a00;
+    }
+    .tip {
+      rect {
+        fill: #eee;
+        stroke: #ccc;
+      }
+      text {
+        font-size: 60px;
+        text-anchor: middle;
+        fill: #a00;
+      }
+    }
   }
 }

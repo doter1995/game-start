@@ -71,7 +71,6 @@ export default class Chart extends Component {
 
     keG
       .append('line')
-      .attr('stroke', '#000')
       .attr('stroke-width', function(d, i) {
         if (i == 0 || i == 100) {
           return '1px';
@@ -108,27 +107,20 @@ export default class Chart extends Component {
     //绘制指针
     this.dataG = arcG
       .append('g')
-      .attr('class', 'zhen')
+      .attr('class', 'pointer')
       .append('polygon')
-      .attr('stroke', '#e00')
-      .attr('fill', '#a00')
       .attr('points', '-50,0 0,-30 165,0 0,30')
       .attr('transform', 'rotate(' + scaleKe(dataSet) + ')');
-    var dataTip = arcG.append('g').attr('class', 'text');
+    var dataTip = arcG.append('g').attr('class', 'tip');
 
     dataTip
       .append('rect')
-      .attr('fill', '#eee')
-      .attr('stroke', '#ccc')
       .attr('x', -80)
       .attr('y', 120)
       .attr('width', 160)
       .attr('height', 80);
     this.dataText = dataTip
       .append('text')
-      .style('font-size', 60)
-      .style('text-anchor', 'middle')
-      .attr('fill', '#a00')
       .attr('y', 180)
       .text(dataSet);
   };
