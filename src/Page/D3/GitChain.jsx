@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactInterval from 'react-interval';
 import { GitChain } from 'Component/Charts';
 
-export default class D3map extends Component {
+export default class Index extends Component {
   state = {
     active: 0,
   };

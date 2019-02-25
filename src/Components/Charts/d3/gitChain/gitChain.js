@@ -1,69 +1,66 @@
 import * as d3 from 'd3';
-
-var axisTextColor = '#ccc';
-
+import uuid4 from 'uuid/v4';
 export default function(config) {
   //配置属性
-  var title = config.title ? config.title : '请加入标题';
-  var node = config.node ? config.node : 'body';
-  var width = config.width ? config.width : window.innerWidth;
-  var height = config.height ? config.height : window.innerHeight;
-  var data = config.data ? config.data : [];
-  var useDataset = config.useDataset
+  let title = config.title ? config.title : '请加入标题';
+  let node = config.node ? config.node : 'body';
+  let width = config.width ? config.width : window.innerWidth;
+  let height = config.height ? config.height : window.innerHeight;
+  let data = config.data ? config.data : [];
+  let useDataset = config.useDataset
     ? config.useDataset
     : function(d) {
         console.log(d);
       };
-  var markerWidth = 5; //箭头的大小
-  var tipDot = '; '; //切换中文，或者英文,
+  let markerWidth = 5; //箭头的大小
+  let tipDot = '; '; //切换中文，或者英文,
   //基础工具
-  var parseDate = d3.timeParse('%Y-%m-%d %H:%M:%S.%L');
-  var formatDate = d3.timeFormat('%Y-%m-%d %H:%M:%S.%L');
+  let parseDate = d3.timeParse('%Y-%m-%d %H:%M:%S.%L');
 
-  var marginLeft = 30;
-  var marginRight = 20;
-  var marginTop = 40;
-  var marginBottom = 20;
-  var W = width - marginLeft - marginRight;
-  var H = height - marginTop - marginBottom - 20;
-  var _svgtitle;
+  let axisTextColor = '#ccc';
+
+  let marginLeft = 30;
+  let marginRight = 20;
+  let marginTop = 40;
+  let marginBottom = 20;
+  let W = width - marginLeft - marginRight;
+  let H = height - marginTop - marginBottom - 20;
+  let _svgtitle;
   // var color = d3.scaleOrdinal(d3.schemeCategory20);
   //dom
-  var rootNode;
+  let rootNode;
   //样式属性
   //是否居中对齐 否则左对齐
-  var isCenter = config.isCenter ? true : false;
+  let isCenter = config.isCenter ? true : false;
   //左侧图的宽度，0为不设置
-  var itemW = config.itemW ? config.itemW : 0;
+  let itemW = config.itemW ? config.itemW : 0;
   //是否排序
-  var isSortNode = config.isSortNode != undefined ? config.isSortNode : true;
-  var isSortTime = config.isSortTime != undefined ? config.isSortTime : true;
+  let isSortNode = config.isSortNode != undefined ? config.isSortNode : true;
+  let isSortTime = config.isSortTime != undefined ? config.isSortTime : true;
   //水平一的宽
-  var itemMargin = 50;
+  let itemMargin = 50;
   //垂直1的高
-  var itemMargin1 = 45;
+  let itemMargin1 = 45;
   //节点圆半径
-  var nodeR = 15;
-  //节点圆的外边框
-  var nodeRwidth = 5;
+  let nodeR = 15;
   //背景色透明度，高亮时透明度
-  var opacity = config.style.opacity ? config.style.opacity : [0.3, 0.9];
+  let opacity = config.style.opacity ? config.style.opacity : [0.3, 0.9];
   // var userColor = ['#39397a', '#627a35', '#8d6d2c', '#853c37', '#737f74']
   // var color = ['#2c80bf', '#e95400', '#2aa450', '#bcbf00', '#636363']
-  var userColor = config.style.userColor
+  let userColor = config.style.userColor
     ? config.style.userColor
     : ['#39397a', '#627a35', '#8d6d2c', '#853c37', '#737f74'];
-  var color = config.style.color
+  let color = config.style.color
     ? config.style.color
     : ['#2c80bf', '#e95400', '#2aa450', '#bcbf00', '#636363'];
   //文字颜色
-  var textColor = config.style.textColor
+  let textColor = config.style.textColor
     ? config.style.textColor
     : ['#333', '#eee'];
   //使用按钮的样式
   //按钮背景(标准，高亮)
-  var use_back = ['#380', '#7b0'];
-  var backGround, linkNode, linkLine, linkTitleRect, linkTitle;
+  let use_back = ['#380', '#7b0'];
+  let backGround, linkNode, linkLine, linkTitleRect, linkTitle;
 
   //绘制
   function render() {
@@ -73,7 +70,7 @@ export default function(config) {
     d3.select(node)
       .selectAll('svg')
       .remove();
-    var Node = d3.select(node);
+    let Node = d3.select(node);
     _svgtitle = Node.append('div')
       .style('position', 'relative')
       .style('color', axisTextColor)
@@ -102,7 +99,7 @@ export default function(config) {
     };
 
     //绘制数据
-    var titltData = { index: -1, length: 0, titles: [] };
+    let titltData = { index: -1, length: 0, titles: [] };
     //处理图形的宽度
     itemW = itemW != 0 ? itemW : dataSet.classes.length * itemMargin;
     //调整图层
@@ -112,8 +109,8 @@ export default function(config) {
     linkTitleRect = rootNode.append('g');
     linkTitle = rootNode.append('g');
     if (isCenter) {
-      var center = W / 2 - 20;
-      var left = center - itemW;
+      let center = W / 2 - 20;
+      let left = center - itemW;
       backGround.attr('transform', 'translate(' + left + ',0)');
       linkNode.attr('transform', 'translate(' + left + ',0)');
       linkLine.attr('transform', 'translate(' + left + ',0)');
@@ -123,7 +120,7 @@ export default function(config) {
 
     dataSet.data.forEach(function(d, i) {
       //绘制连线
-      var line = d3
+      let line = d3
         .line()
         .x(function(d) {
           return d[0];
@@ -132,7 +129,7 @@ export default function(config) {
           return Y(d[1]);
         })
         .curve(d3.curveMonotoneX);
-      var orientLine = GetLines(dataSet, d);
+      let orientLine = GetLines(dataSet, d);
       orientLine.forEach(function(dd, ii) {
         linkLine
           .append('path')
@@ -433,7 +430,7 @@ export default function(config) {
     var time = 'a';
     var index = -1;
     dataSet.data.forEach(function(d, i) {
-      d['id'] = guid();
+      d['id'] = uuid4();
       //d.type!='create' && d.type!='use'
       if (d.time != time) {
         index += 1;
@@ -559,29 +556,10 @@ export default function(config) {
       data[v.type].to.push(v.to);
     }
   }
-  //生成随机码
-  function guid() {
-    function S4() {
-      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    }
-    return (
-      S4() +
-      S4() +
-      '-' +
-      S4() +
-      '-' +
-      S4() +
-      '-' +
-      S4() +
-      '-' +
-      S4() +
-      S4() +
-      S4()
-    );
-  }
+
   //添加箭头 orient是方向
   function addMarker(orient, color) {
-    var uid = guid();
+    var uid = uuid4();
     rootNode
       .append('defs')
       .append('marker')
