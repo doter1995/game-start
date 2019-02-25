@@ -90,13 +90,7 @@ export default function(config) {
       .attr('height', height - 20)
       .append('g')
       .attr('transform', 'translate(' + marginLeft + ',' + marginTop + ')');
-    var Y = function(d) {
-      if (isSortTime) {
-        return d;
-      } else {
-        return Hlength - d;
-      }
-    };
+    var Y = d => (isSortTime ? d : Hlength - d);
 
     //绘制数据
     let titltData = { index: -1, length: 0, titles: [] };
@@ -122,12 +116,8 @@ export default function(config) {
       //绘制连线
       let line = d3
         .line()
-        .x(function(d) {
-          return d[0];
-        })
-        .y(function(d) {
-          return Y(d[1]);
-        })
+        .x(d => d[0])
+        .y(d => Y(d[1]))
         .curve(d3.curveMonotoneX);
       let orientLine = GetLines(dataSet, d);
       orientLine.forEach(function(dd, ii) {
@@ -137,9 +127,7 @@ export default function(config) {
           .datum(dd.line)
           .attr('d', line)
           .attr('stroke-width', 3)
-          .attr('stroke', function(i) {
-            return userColor[dataSet.user.indexOf(d.user)];
-          })
+          .attr('stroke', () => userColor[dataSet.user.indexOf(d.user)])
           .attr('fill', 'none')
           .attr(
             'marker-end',
@@ -213,16 +201,12 @@ export default function(config) {
           .attr('width', W - itemW)
           .attr('fill', userColor[dataSet.user.indexOf(d.user)])
           .attr('opacity', opacity[0])
-          .on('mouseover', function(d) {
-            select(d);
-          })
-          .on('mouseout', function(d) {
-            select({ index: -1 });
-          });
+          .on('mouseover', d => select(d))
+          .on('mouseout', d => select({ index: -1 }));
         //每一行,第一打印
         var userData = getTitle(dataSet, titltData);
         var dataString = '';
-        dataSet.user.forEach(function(d, ii) {
+        dataSet.user.forEach(function(d) {
           if (userData.user.indexOf(d) != -1) {
             //匹配到用户
             dataString += ' ' + d; //打印用户
@@ -325,7 +309,6 @@ export default function(config) {
             });
         }
       }
-
       //记录节点
       dataSet.state[d.to].index = d.index;
     });
@@ -394,13 +377,12 @@ export default function(config) {
     render();
   };
   function getType(type) {
-    return type == 'create'
-      ? '创建'
-      : type == 'refer'
-      ? '合并'
-      : type == 'use'
-      ? '使用'
-      : '';
+    let types = {
+      create: '创建',
+      refer: '合并',
+      use: '使用',
+    };
+    return types[type];
   }
   function getTag(d) {
     return '『' + d + '』';
@@ -413,29 +395,19 @@ export default function(config) {
       state: {},
     };
 
-    //时间排序 小》大
-    //chrome方法失效
-    // data.sort(function (a, b) {
-    //   return a.time > b.time
-    // })
-
-    data.sort(function(a, b) {
-      return (
-        parseDate(a.time.substring(0, 23)) - parseDate(b.time.substring(0, 23))
-      );
-    });
+    data.sort(
+      (a, b) =>
+        parseDate(a.time.substring(0, 23)) - parseDate(b.time.substring(0, 23)),
+    );
     //数组排序
     dataSet.data = data;
     //刷选出来对应的分支类型
     var time = 'a';
     var index = -1;
-    dataSet.data.forEach(function(d, i) {
+    dataSet.data.forEach(function(d) {
       d['id'] = uuid4();
-      //d.type!='create' && d.type!='use'
-      if (d.time != time) {
-        index += 1;
-      }
-      d['index'] = index;
+      d['index'] = d.time != time ? index++ : index;
+
       if (d.type == 'refer' && dataSet.classes.indexOf(d.from) == -1) {
         dataSet.classes.push(d.from);
         dataSet.state[d.from] = { index: -1 };
@@ -449,11 +421,8 @@ export default function(config) {
       }
       time = d.time;
     });
-    isSortNode
-      ? dataSet.classes.sort(function(a, b) {
-          return a > b;
-        })
-      : '';
+
+    isSortNode ? dataSet.classes.sort((a, b) => a > b) : '';
     return dataSet;
   }
   //获取连线
@@ -518,7 +487,7 @@ export default function(config) {
     return data;
   }
   function getTitle(dataSet, titltData) {
-    var userData = { user: [], data: [] };
+    let userData = { user: [], data: [] };
     //合并算法
     dataSet.data.forEach(function(v, ind) {
       if (v.index == titltData.index) {
@@ -541,7 +510,7 @@ export default function(config) {
   //获取通类型
   function getTypeData(data, v) {
     if (v.type == 'refer') {
-      var isPush = false;
+      let isPush = false;
       data.refer.forEach(function(dd, i) {
         if (dd.to == v.to) {
           dd.from.push(v.from);
@@ -559,7 +528,7 @@ export default function(config) {
 
   //添加箭头 orient是方向
   function addMarker(orient, color) {
-    var uid = uuid4();
+    let uid = uuid4();
     rootNode
       .append('defs')
       .append('marker')
