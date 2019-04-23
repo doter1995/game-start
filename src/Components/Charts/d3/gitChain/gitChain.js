@@ -21,7 +21,7 @@ export default function(config) {
 
   let marginLeft = 30;
   let marginRight = 20;
-  let marginTop = 40;
+  let marginTop = 100;
   let marginBottom = 20;
   let W = width - marginLeft - marginRight;
   let H = height - marginTop - marginBottom - 20;

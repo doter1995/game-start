@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import DashBoard from './DashBoardPage';
 import D3Map from './D3Map';
 import GitChain from './GitChain';
+import TimeLine from './TimeLine';
 let config = {
   scene: {
     dashBoard: <DashBoard />,
     D3Map: <D3Map />,
     gitChain: <GitChain />,
+    timeLine: <TimeLine />,
   },
   common: {},
 };

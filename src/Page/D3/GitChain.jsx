@@ -167,7 +167,7 @@ export default class Index extends Component {
       <div>
         <ReactInterval
           timeout={1000}
-          enabled
+          enabled={false}
           callback={() => this.setState({ active: ++this.state.active % 4 })}
         />
         <GitChain

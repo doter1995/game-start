@@ -50,7 +50,7 @@ export default class Index extends Component {
           json="/data/china.json"
           dataSet={dataSet}
           width={800}
-          height={500}
+          height={600}
           active={this.state.active}
         />
       </div>
